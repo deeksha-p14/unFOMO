@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+body {
+  @apply font-sans antialiased overflow-x-hidden min-h-screen transition-colors duration-200 selection:bg-lavender-500/30 selection:text-lavender-200;
+}
+
+html.dark body {
+  @apply bg-navy-950 text-slate-100;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(167, 139, 250, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 85%, rgba(30, 41, 59, 0.4) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+html:not(.dark) body {
+  @apply bg-slate-50 text-slate-800;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(167, 139, 250, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 85%, rgba(241, 245, 249, 0.8) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Glassmorphism custom classes */
+html.dark .glass-card {
+  @apply bg-slate-900/60 backdrop-blur-xl border border-white/8 rounded-2xl shadow-xl hover:border-white/10 transition-all duration-200;
+}
+
+html:not(.dark) .glass-card {
+  @apply bg-white/80 backdrop-blur-xl border border-slate-200/80 rounded-2xl shadow-sm hover:border-slate-300 hover:shadow-md transition-all duration-200 text-slate-800;
+}
+
+html.dark .glass-panel {
+  @apply bg-navy-900/80 backdrop-blur-2xl border border-white/10 shadow-glass;
+}
+
+html:not(.dark) .glass-panel {
+  @apply bg-white/90 backdrop-blur-2xl border border-slate-200 shadow-md;
+}
+
+/* Light mode specific text & background overrides */
+html:not(.dark) .text-white {
+  @apply text-slate-900;
+}
+
+html:not(.dark) .bg-navy-950 {
+  @apply bg-slate-50;
+}
+
+html:not(.dark) .bg-navy-900 {
+  @apply bg-white;
+}
+
+html:not(.dark) .bg-navy-900\/95 {
+  @apply bg-white/95;
+}
+
+html:not(.dark) .bg-navy-900\/80 {
+  @apply bg-white/90;
+}
+
+html:not(.dark) .bg-navy-950\/60 {
+  @apply bg-slate-100;
+}
+
+html:not(.dark) .border-white\/8,
+html:not(.dark) .border-white\/5,
+html:not(.dark) .border-white\/10 {
+  @apply border-slate-200;
+}
+
+html:not(.dark) .hover\:bg-white\/5:hover,
+html:not(.dark) .hover\:bg-white\/10:hover,
+html:not(.dark) .hover\:bg-white\/3:hover {
+  @apply bg-slate-100;
+}
+
+html:not(.dark) .bg-white\/5 {
+  @apply bg-slate-100;
+}
+
+html:not(.dark) .text-slate-300 {
+  @apply text-slate-700;
+}
+
+html:not(.dark) .text-slate-400 {
+  @apply text-slate-600;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-400/40 rounded-full hover:bg-slate-500/60;
+}
+
+/* Animations */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+
+.pulse-glow {
+  animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
